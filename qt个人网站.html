@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>qtnet</title>
+  <style>
+    body {
+      background-image: url("背景.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 100px;
+    }
+    
+    #time {
+      font-size: 24px;
+      margin-top: 20px;
+      color: white; /* 将当前时间的颜色修改为白色 */
+    }
+
+    #heading {
+      color: white; /* 将欢迎语的颜色修改为白色 */
+    }
+    #jianyi{
+      color: white;
+    }
+ </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="heading">欢迎来到 qtnet!</h1>
+    <button id="homepageBtn" onclick="redirectToHomePage()">去 qt 的主页</button>
+    <p id="time"></p>
+    <button id="langSwitch" onclick="toggleLanguage()">切换到 English</button>
+ <p id="jianyi">网站仍存在很多不足,望指点</p> </div>
+
+  <script>
+    var isEnglish = false;
+
+    function redirectToHomePage() {
+      window.location.href = 'https://qt33.github.io/zhuye';
+    }
+
+    function displayCurrentTime() {
+      var now = new Date();
+      var timeElement = document.getElementById('time');
+      timeElement.innerHTML = '当前时间：' + now.toLocaleString();
+    }
+
+    function toggleLanguage() {
+      var headingElement = document.getElementById('heading');
+      var homepageButton = document.getElementById('homepageBtn');
+      var langSwitchButton = document.getElementById('langSwitch');
+
+      if (isEnglish) {
+        headingElement.innerHTML = '欢迎来到 qtnet!';
+        homepageButton.innerHTML = '去 qt 的主页';
+        langSwitchButton.innerHTML = '切换到 English';
+        isEnglish = false;
+      } else {
+        headingElement.innerHTML = 'Welcome to qtnet!';
+        homepageButton.innerHTML = 'Go to qt\'s Homepage';
+        langSwitchButton.innerHTML = 'Switch to 中文';
+        isEnglish = true;
+      }
+    }
+
+    setInterval(displayCurrentTime, 1000);
+    window.onload = displayCurrentTime;
+  </script>
+</body>
+</html>
